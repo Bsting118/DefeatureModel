@@ -1,0 +1,724 @@
+!
+!-------------------------- Default Units for Model ---------------------------!
+!
+!
+defaults units  &
+   length = mm  &
+   angle = deg  &
+   force = newton  &
+   mass = kg  &
+   time = sec
+!
+defaults units  &
+   coordinate_system_type = cartesian  &
+   orientation_type = space999
+!
+!--------------------------- Model Specific Colors ----------------------------!
+!
+!
+if condition = (! db_exists(".colors.COLOR_R12G12B12"))
+!
+color create  &
+   color_name = .colors.COLOR_R12G12B12  &
+   red_component = 0.1  &
+   blue_component = 0.1  &
+   green_component = 0.1
+!
+else 
+!
+color modify  &
+   color_name = .colors.COLOR_R12G12B12  &
+   red_component = 0.1  &
+   blue_component = 0.1  &
+   green_component = 0.1
+!
+end 
+!
+if condition = (! db_exists(".colors.COLOR_R200G200B200"))
+!
+color create  &
+   color_name = .colors.COLOR_R200G200B200  &
+   red_component = 0.2  &
+   blue_component = 0.2  &
+   green_component = 0.2
+!
+else 
+!
+color modify  &
+   color_name = .colors.COLOR_R200G200B200  &
+   red_component = 0.2  &
+   blue_component = 0.2  &
+   green_component = 0.2
+!
+end 
+!
+if condition = (! db_exists(".colors.COLOR_R111G111B111"))
+!
+color create  &
+   color_name = .colors.COLOR_R111G111B111  &
+   red_component = 0.11  &
+   blue_component = 0.11  &
+   green_component = 0.11
+!
+else 
+!
+color modify  &
+   color_name = .colors.COLOR_R111G111B111  &
+   red_component = 0.11  &
+   blue_component = 0.11  &
+   green_component = 0.11
+!
+end 
+!
+!------------------------ Default Attributes for Model ------------------------!
+!
+!
+defaults attributes  &
+   inheritance = top_down  &
+   icon_visibility = on  &
+   grid_visibility = off  &
+   size_of_icons = 10.0  &
+   spacing_for_grid = 123.0
+!
+!--------------------------- Plugins used by Model ----------------------------!
+!
+!
+plugin load  &
+   plugin_name = .MDI.plugins.controls
+!
+!------------------------------ Adams View Model ------------------------------!
+!
+!
+model create  &
+   model_name = reps_11dummy_r1
+!
+view erase
+!
+!----------------------------- reps_ground_FRAME ------------------------------!
+!
+!
+! ****** Ground Part ******
+!
+part modify rigid_body name_and_position  &
+   part_name = ground  &
+   new_part_name = reps_ground_FRAME
+!
+defaults model  &
+   part_name = reps_ground_FRAME
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.reps_ground_FRAME
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MASTER_global_Mark  &
+   adams_id = 222  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MASTER_global_Mark  &
+   color = MAIZE  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MASTER_origin  &
+   adams_id = 2  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MASTER_origin  &
+   color = MAIZE  &
+   visibility = on  &
+   name_visibility = on  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_Bench_stay  &
+   adams_id = 801  &
+   location = 700.0, 800.0, 900.0  &
+   orientation = 90.0d, 80.0d, 70.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_Bench_stay  &
+   color = MAIZE  &
+   visibility = off  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_istay_atInpShftTop  &
+   adams_id = 800  &
+   location = 400, 500, 600  &
+   orientation = 60.0d, 50.0d, 40.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_istay_atInpShftTop  &
+   color = MAIZE  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.DATUM_BeGone1  &
+   adams_id = 701  &
+   location = 9.8, 7.6, 5.4  &
+   orientation = -90.0d, 90.0d, 90.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.DATUM_BeGone1  &
+   visibility = on  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.DATUM_BeGone2  &
+   adams_id = 702  &
+   location = 0.0, 123, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.DATUM_BeGone2  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.DATUM_BeGone3  &
+   adams_id = 703  &
+   location = 7, 6, 5  &
+   orientation = 90.0d, 90.0d, 90.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.DATUM_BeGone3  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MASSPROP_IShouldBeGone  &
+   adams_id = 500  &
+   location = 5, 4.3, 2.1  &
+   orientation = 90.0d, 90.0d, 90.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MASSPROP_IShouldBeGone  &
+   color = Aquamarine  &
+   visibility = off  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.TESTONLY  &
+   adams_id = 400  &
+   location = 0.0, 1.0, 0.0  &
+   orientation = 10.0d, 20.0d, 30.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.TESTONLY  &
+   color = GREEN  &
+   visibility = off  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_BenchTest_Sample  &
+   adams_id = 350  &
+   location = 50.0, 60.0, 70.0  &
+   orientation = 40.0d, 30.0d, 20.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_BenchTest_Sample  &
+   visibility = off  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.KEYPT_sampleA  &
+   adams_id = 160  &
+   location = 1, -2, 3  &
+   orientation = 0.00d, 0.00d, 0.00d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.KEYPT_sampleA  &
+   color = MAIZE  &
+   visibility = on  &
+   name_visibility = on  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.KEYPT_sampleB  &
+   adams_id = 161  &
+   location = 3, -2, 1  &
+   orientation = 0.00d, 0.00d, 0.00d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.KEYPT_sampleB  &
+   color = MAIZE  &
+   visibility = on  &
+   name_visibility = on  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_sample_ARef  &
+   adams_id = 275  &
+   location = 1.0, 1.0, 1.0  &
+   orientation = 300.00d, 200.00d, 100.00d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_sample_ARef  &
+   color = CYAN  &
+   visibility = off  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_sample_BRef  &
+   adams_id = 276  &
+   location = 2.0, 2.0, 2.0  &
+   orientation = 100.0d, 200.0d, 300.0d
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_sample_CRef  &
+   adams_id = 277  &
+   location = 3, -3, 3  &
+   orientation = 123.0d, 123.0d, 123.0d
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MARKER_SPARE1  &
+   adams_id = 100  &
+   location = -1, -1, 1  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MARKER_SPARE2  &
+   adams_id = 200  &
+   location = -2.0, -2.0, -2.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part attributes  &
+   part_name = .reps_11dummy_r1.reps_ground_FRAME  &
+   color = WHITE  &
+   name_visibility = off
+!
+!------------------------------------ Belt ------------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.reps_ground_FRAME
+!
+part create rigid_body name_and_position  &
+   part_name = .reps_11dummy_r1.Belt  &
+   adams_id = 25  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.Belt
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.Belt.PSMAR  &
+   adams_id = 123  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.Belt.PSMAR  &
+   visibility = off
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.Belt.currMarker  &
+   adams_id = 456  &
+   location = 1.111, 222.222, -33.333  &
+   orientation = 0.0d, 1.1d, 2.2d
+!
+part create rigid_body mass_properties  &
+   part_name = .reps_11dummy_r1.Belt  &
+   density = 1.2345
+!
+! ****** Graphics for current part ******
+!
+part attributes  &
+   part_name = .reps_11dummy_r1.Belt  &
+   active = off  &
+   color = GREEN  &
+   visibility = off
+!
+!-------------------------------- Unassociated_Housing --------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.reps_ground_FRAME
+!
+part create rigid_body name_and_position  &
+   part_name = .reps_11dummy_r1.Unassociated_Housing  &
+   adams_id = 13  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.Unassociated_Housing
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.Unassociated_Housing.PSMAR  &
+   adams_id = 111  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker attributes  &
+   marker_name = .reps_11dummy_r1.Unassociated_Housing.PSMAR  &
+   visibility = off
+!
+marker create  &
+   marker_name = .reps_11dummy_r1.Unassociated_Housing.currMarker  &
+   adams_id = 222  &
+   location = 5.555, -6.666, 7.777  &
+   orientation = 2.2d, 1.1d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .reps_11dummy_r1.Unassociated_Housing  &
+   density = 0.54321
+!
+! ****** Graphics for current part ******
+!
+part attributes  &
+   part_name = .reps_11dummy_r1.Unassociated_Housing  &
+   active = off  &
+   color = COLOR_R153G153B153  &
+   visibility = off  &
+   transparency = 75
+!
+! ****** Graphics from Parasolid file ******
+!
+file parasolid read  &
+   file_name = "reps_11dummy_r1_sampleModel.xmt_txt"  &
+   model_name = .reps_11dummy_r1
+!
+geometry attributes  &
+   geometry_name = .reps_11dummy_r1.Motor_Housing.SOLID001  &
+   color = COLOR_R111G111B111
+!
+geometry attributes  &
+   geometry_name = .reps_11dummy_r1.UprPinBrg.SOLID002  &
+   color = COLOR_R222G222B222
+!
+geometry attributes  &
+   geometry_name = .reps_11dummy_r1.Assist_Cover.SOLID003  &
+   color = RED
+!
+geometry attributes  &
+   geometry_name = .reps_11dummy_r1.t.SOLID004  &
+   color = COLOR_R012G012B012
+!
+geometry attributes  &
+   geometry_name = .reps_11dummy_r1.Belt.SOLID005  &
+   color = GREEN
+!
+geometry attributes  &
+   geometry_name = .reps_11dummy_r1.Unassociated_Housing.SOLID006  &
+   color = COLOR_R123G123B123
+!
+!----------------------------------- Forces -----------------------------------!
+!
+!
+force create direct single_component_force  &
+   single_component_force_name = .reps_11dummy_r1.SFORCE_sampleTest  &
+   adams_id = 6  &
+   type_of_freedom = translational  &
+   i_marker_name = .reps_11dummy_r1.reps_sample.MKR_sampleTest_ARef  &
+   j_marker_name =   &
+                   .reps_11dummy_r1.reps_sample.MKR_sampleTest_BRef  &
+   action_only = off  &
+   function = ""
+!
+force attributes  &
+   force_name = .reps_11dummy_r1.SFORCE_sampleTest  &
+   color = Marine  &
+   visibility = off  &
+   name_visibility = off  &
+   size_of_icons = 10.0
+!
+force create direct single_component_force  &
+   single_component_force_name = .reps_11dummy_r1.SFORCE_reps_RP_gearSep  &
+   adams_id = 10  &
+   type_of_freedom = translational  &
+   i_marker_name =   &
+                   .reps_11dummy_r1.sample.MKR_rpGearSep_Force_ARef  &
+   j_marker_name = .reps_11dummy_r1.reps_sample.MKR_rpGearSep_Force_BRef  &
+   action_only = off  &
+   function = ""
+!
+force attributes  &
+   force_name = .reps_11dummy_r1.SFORCE_reps_RP_gearSep  &
+   color = Marine  &
+   visibility = off  &
+   name_visibility = off  &
+   size_of_icons = 1.0
+!
+!---------------------------------- Measures ----------------------------------!
+!
+!
+measure create function  &
+   measure_name = .reps_11dummy_r1.MEAS_testRef_sampleMotor1  &
+   function = ""  &
+   units = "no_units"  &
+   create_measure_display = no
+!
+data_element attributes  &
+   data_element_name = .reps_11dummy_r1.MEAS_testRef_sampleMotor1  &
+   color = WHITE
+!
+measure create function  &
+   measure_name = .reps_11dummy_r1.MEAS_simOut_sampleMotor2  &
+   function = ""  &
+   units = "no_units"  &
+   create_measure_display = no
+!
+data_element attributes  &
+   data_element_name = .reps_11dummy_r1.MEAS_simOut_sampleMotor2  &
+   color = WHITE
+!
+measure create function  &
+   measure_name = .reps_11dummy_r1.MEAS_calcErr_sampleMotor3  &
+   function = ""  &
+   units = "no_units"  &
+   create_measure_display = no
+!
+data_element attributes  &
+   data_element_name = .reps_11dummy_r1.MEAS_calcErr_sampleMotor3  &
+   color = WHITE
+!
+!---------------------------- Adams View Variables ----------------------------!
+!
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.reps_simpleCoordVariable  &
+   units = "length"  &
+   range = 0.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 0.0  &
+   comments =   &
+              "an example Adams comment"
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.reps_sample_A_Yoffset  &
+   units = "height"  &
+   range = 0.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 0.0  &
+   comments =   &
+              "Y axis sample; I should be removed because I'm a '.[modelName].reps_' variable "
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.reps_sample_B_Yoffset  &
+   units = "height"  &
+   range = 0.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 0.0  &
+   comments =   &
+              "Y axis sample; I should be removed because I'm a '.[modelName].reps_' variable "
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.reps_sample_C_Yoffset  &
+   units = "height"  &
+   range = 0.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 0.0  &
+   comments =   &
+              "Y axis sample; I should be removed because I'm a '.[modelName].reps_' variable "
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.sample_array  &
+   units = "length"  &
+   range = -1.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 0.0  &
+   comments =   &
+              "A sample array variable; I should stay"
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.repsCalc_rpCFactor  &
+   units = "length"  &
+   range = -1.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 30.0  &
+   comments =   &
+              "[Calc] Rack/pinion C-Factor"
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.reps_A_rpNormPressAng  &
+   units = "angle"  &
+   range = -1.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 15.0  &
+   comments =   &
+              "OK--Rack/pinion normal pressure angle (magnitude, at pinion pitch diameter)"
+!
+variable create  &
+   variable_name = .reps_11dummy_r1.repsCalc_rackHelixAng  &
+   units = "angle"  &
+   range = -1.0, 1.0  &
+   use_allowed_values = no  &
+   delta_type = relative  &
+   real_value = 7.5  &
+   comments =   &
+              "[Calc] Rack helix angle"
+!
+!--------------------- Adams View Optimization Objective ----------------------!
+!
+!
+optimize objective create  &
+   objective_name = .reps_11dummy_r1.DOBJ_avg_simpleErr  &
+   measure_name = .reps_11dummy_r1.simpleErr  &
+   output_characteristic = average
+!
+optimize objective create  &
+   objective_name = .reps_11dummy_r1.DOBJ_rms_simpleErr  &
+   measure_name = .reps_11dummy_r1.simpleErr  &
+   output_characteristic = rms
+!
+!---------------------------- Function definitions ----------------------------!
+!
+!
+data_element modify variable  &
+   variable_name = .reps_11dummy_r1.VAR_reps_YeeHawRate  &
+   function = "1"
+!
+force modify direct single_component_force  &
+   single_component_force_name = .reps_11dummy_r1.SFORCE_reps_RP_gearSep  &
+   function = "2* PI * ABS(VARVAL(.reps_11dummy_r1.VAR_reps_meas_pinionTorque_Nmm) / .reps_11dummy_r1.repsCalc_rpCFactor * TAN(.reps_11dummy_r1.reps_A_rpNormPressAng) / COS(.reps_11dummy_r1.repsCalc_rackHelixAng))"
+!
+force modify direct single_component_force  &
+   single_component_force_name = .reps_11dummy_r1.SFORCE_sampleTest  &
+   function = "1.0*SIN(time)"
+!
+!-------------------------- Adams View UDE Instance ---------------------------!
+!
+!
+ude modify instance  &
+   instance_name = .reps_11dummy_r1.SPRING_sample
+!
+!--------------------------- Expression definitions ---------------------------!
+!
+!
+marker modify  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_sample_Aref  &
+   location =   &
+      (LOC_RELATIVE_TO({0.0, 0.0, 0.0}, .reps_11dummy_r1.reps_ground_FRAME.KEYPT_sampleA))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, 0.0d, 0.0d}, .reps_11dummy_r1.reps_ground_FRAME.sample_refA))
+!
+marker modify  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_sample_BRef  &
+   location =   &
+      (LOC_RELATIVE_TO({0.0, 0.0, 0.0}, .reps_11dummy_r1.reps_ground_FRAME.KEYPT_sampleB))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, 0.0d * .reps_11dummy_r1.repsCalc_sample, 0.0d}, .reps_11dummy_r1.reps_ground_FRAME.sample_refB))
+!
+marker modify  &
+   marker_name = .reps_11dummy_r1.reps_ground_FRAME.MKR_sample_CRef  &
+   location =   &
+      (LOC_RELATIVE_TO({0.0, 0.0, 0.0}, .reps_11dummy_r1.reps_ground_FRAME.KEYPT_sampleC))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, 0.0d, 0.0d}, .reps_11dummy_r1.reps_ground_FRAME.sample_refC))
+!
+data_element modify variable  &
+   variable_name = .reps_11dummy_r1.VAR_pwr_on  &
+   initial_condition = (1.0)
+!
+material modify  &
+   material_name = .reps_11dummy_r1.aluminum  &
+   density = (2710.0(kg/meter**3))  
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.reps_ground_FRAME
+!
+marker modify  &
+   marker_name = .reps_11dummy_r1.sample_index_cylRef  &
+   location =   &
+      (LOC_RELATIVE_TO({0.0, 0.0, 0.0}))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, 0.0d, 0.0d}, .reps_11dummy_r1.reps_sample.MKR_example_datum))  &
+   relative_to = .reps_11dummy_r1.reps_sample
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.reps_ground_FRAME
+!
+geometry modify shape cylinder  &
+   cylinder_name = .reps_11dummy_r1.tooth_cyl  &
+   length = (ABS(0.0))  &
+   radius = (ABS(1) / 1)
+marker modify  &
+   marker_name = .reps_11dummy_r1.testFixt  &
+   location =   &
+      (LOC_RELATIVE_TO({0.0, 0.0, 0.0}, .reps_11dummy_r1.sample_fixtureXYZ))  &
+   orientation =   &
+      (ORI_RELATIVE_TO({0.0d, 0.0d, 0.0d}))  &
+   relative_to = .reps_11dummy_r1.elsewhere
+!
+part modify rigid_body mass_properties  &
+   part_name = .reps_11dummy_r1.testFixt  &
+   density = (.reps_11dummy_r1.MAT.density)
+!
+marker modify  &
+   marker_name = .reps_11dummy_r1.somewhere.PSMAR  &
+   location =   &
+      (LOC_RELATIVE_TO({0.0, 0.0, 0.0}))  &
+   relative_to = .reps_11dummy_r1.somewhere
+!
+defaults coordinate_system  &
+   default_coordinate_system = .reps_11dummy_r1.reps_ground_FRAME
+!
+geometry modify shape force  &
+   force_name = .reps_11dummy_r1.sample_GearMntA  &
+   applied_at_marker_name = (.reps_11dummy_r1.sample_GearMntA.i)
+!
+geometry modify shape force  &
+   force_name = .reps_11dummy_r1.sample_GearMntB  &
+   applied_at_marker_name = (.reps_11dummy_r1.sample_GearMntB.i)
+!
+geometry modify shape force  &
+   force_name = .reps_11dummy_r1.sample_GearMntC  &
+   applied_at_marker_name = (.reps_11dummy_r1.sample_GearMntC.i)
+!
+geometry modify shape force  &
+   force_name = .reps_11dummy_r1.sample_BNBrg  &
+   applied_at_marker_name = (.reps_11dummy_r1.sample_BNBrg.i)
+!
+geometry modify shape force  &
+   force_name = .reps_11dummy_r1.sample_SimpleSpr  &
+   applied_at_marker_name = (.reps_11dummy_r1.sample_SimpleSpring.i)
+!
+variable modify  &
+   variable_name = .reps_11dummy_r1.simple_Dependency  &
+   real_value = (.reps_11dummy_r1.Belt)
+!
+variable modify  &
+   variable_name = .reps_11dummy_r1.reps_sample_A_Yoffset  &
+   real_value = (-6.5 - 4.3 - 2.1)
+!
+variable modify  &
+   variable_name = .reps_11dummy_r1.reps_sample_B_Yoffset  &
+   real_value = (-1.2 - 3.4 - 5.6 + 7.8)
+!
+variable modify  &
+   variable_name = .reps_11dummy_r1.reps_sample_C_Yoffset  &
+   real_value = (-1.1 - 2.2 + 3.3)
+!
+variable modify  &
+   variable_name = .reps_11dummy_r1.sample_array  &
+   real_value = ({1.0d, 1.0d, -1.0d})
+!
+model display  &
+   model_name = reps_11dummy_r1
