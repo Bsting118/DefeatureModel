@@ -1,0 +1,16 @@
+Using Pyinstaller To Make Defeature Kits:
+=========================================
+1.) Have Python Installed on your PC (Python version 3.9)
+2.) Install PyInstaller using pip from Command Terminal
+-->Type "cmd" into your Windows Search bar in bottom left
+-->In the command terminal, type "pip install pyinstaller" (without the quotes)
+3.) Navigate in the command terminal to the directory where the Python defeature program is located.
+-->Use cd to navigate through folder/file directories in cmd
+-->You can also use TAB with cd for directory auto-complete.
+4.)Once you are in the directory, type in the command terminal: "pyinstaller yourDefeatureScriptHere.py --onefile"
+-->You should then see some downloading in the terminal.
+-->You can also go to the directory and see the new folders and files pop up. You will mainly need the dist, the script, the build, and pycache folders/files.
+5.)Once you have all the files and folders made using Pyinstaller, bundle them up together in a "kit folder" (name it however you like)
+6.)Upload that kit folder to your drive.
+
+Still need help with Pyinstaller? Visit: https://pythoninoffice.com/freeze-python-code-how-to-run-script-without-python-installed/

@@ -1,0 +1,20 @@
+Installing Python on Windows 10:
+================================
+1.)Go to https://www.python.org/downloads/release/python-397/
+and click on the Windows installer link (64 or 32 bit, depending on your system; usually 64)
+2.)Once the Python installer executable is downloading, click to open it
+3.)Once the Install wizard or selection screen appears, check the option "Add Python to PATH"
+4.)Then, go to customize installation by clicking on it.
+5.)Check the Documentation install, pip install, td/tk install, and test suite install.
+6.)Click Next.
+7.)You can leave install for all users unchecked.
+8.)Check associate files with Python, check create shortcuts, check add Python to environment variables, check precompile standard library, check download debugging symbols.
+9.)If you are using Visual Studio Code IDE, you can check the the download and debug binaries. (if you are using PyCharm, you don't need to do this)
+10.)You can customize install location or leave as is. Just remember it.
+11.)Click Install.
+12.)Wait a few minutes for it to install.
+13.)Once done, check if it is fully installed and working by opening up the command terminal with typing "cmd" into the Windows Search bar in bottom left.
+14.)In the Command Terminal, type "python". It should show a version number.
+15.)You're all done! 
+
+If you need extra help, check out these web sites: "https://data-flair.training/blogs/install-python-windows/" and "http://www.codestudyblog.com/cnb/0320161749.html"

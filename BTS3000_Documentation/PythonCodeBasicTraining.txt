@@ -1,0 +1,247 @@
+===========================
+Basic Python Code Syntax:
+===========================
+________________________________________________________________________________________________________________
+-Variables: 
+--> var = 0, var = "abc", var = 0.0, etc. (no data type decl. needed)
+--> global var = 0; (define variable as global to affect global variable value; useful inside functions)
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Print Statements:
+--> print(var), print("Hello World!"), print(func()) (notice no ";" unlike Java)
+--> TIP: You typically don't need print statements when using GUIs since print statements output to console, not GUI.
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Comments:
+--> # This is a comment! Python uses hashtags for comments!
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Main Safeguard (aka the "Main method" in Python to give steps if this file or Python file is being executed):
+--> if __name__ == "__main__":
+       # List the functions you want executed in this file if it is called directly.
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Functions:
+--> # A basic Python function:
+    def func1():
+        print("I am a function")
+(notice how white space is important in Python and that Python uses ":" instead of "{}" for functions/methods)
+--> # A Python function that takes arguments:
+    def func2(arg1, arg2):
+	print(arg1, " ", arg2)
+--> # A Python function that returns a value:
+    def func3(x):
+	return x * x * x
+--> # Calling Python functions:
+    func1()
+    func2(10, 20)
+    print (func3(2))
+--> # More functions: in Python, you can supply default value parameters that can be overrided in a function. 
+    # You can also switch the order of parameters as long as you ref. their name and assign values.
+    def power(num, x=1):
+        result = 1
+        for i in range(x):
+            result = result * num
+        return result
+    # ...
+    print (power(2)) # NOT overrided default parameter; will return number to power of 1 (so 2 to power of 1)
+    print (power(2,3)) # Overrided default parameter; will return number to power of second number (so 2 to power of 3)
+    print (power(x=3, num=2)) # YES, THIS IS LEGAL IN PYTHON! Will return num to power of x as indicated in function's definition
+--> # More functions: function with variable number of arguments or parameters. Using * operator:
+    def multi_add(*args) # * indicates a variable argument list
+        result = 0 # initial value
+        for x in args:
+            result = result + x
+        return result # the variable amnt of arguments are summed with a loop then returned
+    # ...
+    print (multi_add(4, 5, 10, 4)) # Will print out the return value of 23
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Conditional Statements:
+    # ...
+    x = 5
+    y = 10
+    # Conditional flow uses if, elif, else (note that Python uses ":" instead of "{}" for conditionals)
+    if (x < y):
+      stat = "x is less than y."
+    elif (x == y):
+      stat = "x is equal to y."
+    else:
+      stat = "x is greater than y."
+    # ...
+    print (stat)
+    # Note that Python does not have switch-case statements (for simplicity sake)
+    # Python conditional statements also let you do this, "a if C else b" like so:
+    stat = "x is less than y." if (x < y) else "x is greater than or same as y." 
+    print (stat)
+_________________________________________________________________________________________________________________
+_________________________________________________________________________________________________________________
+-Loops:
+    # Loops are used for repeating code or instructions. There are different types of loops. 
+    # Python only has while and for loop types.
+    # The while loop in Python:
+    while (x < 5):
+      print(x)
+      x = x + 1
+    # The for loop in Python:
+    for x in range (5, 10):
+      print(x)
+    # Python uses for loops as iterators, like the range for loop. For loops can also iterate over sets:
+    days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] # A simple list, this is both Python's array and array list.
+    for d in days:
+      print (d)
+    # You can use "break" statements to get out of a loop at certain point or condition:
+    for x in range (5, 10):
+      if (x == 7): break
+      print(x)
+    # The "continue" statement can be used to skip over an output in a loop and go to the next iteration:
+    for x in range (5, 10):
+      if (x % 2 == 0): continue
+      print(x) # Output will be "5, 7, 9" since 6 and 8 are skipped for being even (the x % 2)
+    # You can self-make an index in a for loop (like Java) in Python like so:
+    days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    for i,d in enumerate(days):
+      print (i, d)
+    # The enumerate function above will iterate over the list and return index of element in list
+    # The i variable holds the index from enumerate, while d holds the element in days.
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Classes:
+    # Classes are declared using "class" keyword, name, and ":" operator in Python.
+    # In Object-Oriented Programming (OOP), we call the functions inside a class "method"(s).
+    # A method in Python is the same as a function in Python.
+    # The "self" keyword is like the "this" keyword in Java and refers to the current object instance of the class.
+    class myClass():
+      def method1(self):
+        print("myClass method1")
+    
+      def method2(self, someString):
+        print("myClass method2 " + someString)
+    
+    # The main method signature in Python:
+    def main():
+      c = myClass() # Instantiate an object of myClass in main
+      c.method1() # The "self" keyword is auto handeled at runtime by Python
+      c.method2("This is a string")
+    if __name__ == "__main__":
+      main()
+
+    # Now, doing class inheritance in Python (refer to prev. class code):
+    class anotherClass(myClass):
+      def method1(self):
+        myClass.method1(self)
+        print("anotherClass method1")
+      def method2(self, someString):
+        print("anotherClass method2 " + someString)
+    # Rewriting main now:
+    def main():
+      # ...
+      c2 = anotherClass()
+      c2.method1() # This will output "myClass method1" and then "anotherClass method1"
+      c2.method2("This is a string")
+      # The above output prints old output and new output because it is overriding the previous class' method (using inheritance)
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Importing and Using Python Modules (Libraries):
+    # To import a module, use the "import" keyword in Python followed by the package name:
+    import math
+    
+    # You can now use a bunch of pre-built Python math functions like so:
+    print("The square root of 16 is", math.sqrt(16)) # Note that "," is used like appending operator "+" in Java
+    # You can also use pre-built math constants in Python packages as well:
+    print("Pi is:", math.pi)
+    
+    # There are other packages as well, like those for buffering, processing, time, etc.:
+    import io
+    from datetime import date
+    from datetime import time
+    from datetime import datetime
+
+    # NOTE: You usually should import all your packages first at the very top of your code, so they're ready.
+________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________
+-Reading and Writing Files in Python:
+    # Python already has prebuilt-in file functionalities, so you don't need to import
+    def main():
+      # To start, first open the file for writing and create it if it doesn't exist:
+      file = open("textfile.txt", "w+") # First argument if for the file, second is for access level of file
+      # Then, write some text to the file: (NOTE THAT WRITING OVERRIDES ALL PREV. FILE CONTENT)
+      for i in range(10):
+        file.write("This is line " + str(i) + "\r\n")
+      # Close the file when you are done with it:
+      file.close()
+      # You can also add to the end of a file like so (appending):
+      file = open("textfile.txt", "a")
+      # And edit however you want to the end. Then close the file again.
+      file.close()
+      
+      # For reading a file in Python:
+      file = open("textfile.txt", "r")
+      if file.mode == 'r': # This will help prevent errors if the file couldn't be opened
+        contents = file.read()
+        # You can print out the file contents if need be:
+        print(contents)
+      
+      # To read certain lines of a file (for large files) use file reader:
+      # ...
+      if file.mode == 'r':
+        fileLine = file.readlines()
+        for x in fileLine:
+          print (x) # same effect as reading entire file but does in steps now
+    # To rename a file, you must import the os package and then call this:
+    import os
+    os.rename("textfile.txt", "newfile.txt")
+
+    # The "with" keyword allows for local scope object constrcutors (editing attributes):
+    with x as newX:
+      # ...
+__________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________
+-GUIs in Python:
+    # A GUI in python is a lot like painting; you have to first get the canvas ready before you can paint cool stuff on it!
+    # To start making a Python GUI, first declare your root frame (where everything gets placed):
+    root = Tk()  # Also make sure you import tkinter first as well
+    
+    # Usually, people like to divide their GUIs into separate frames for controlled development.
+    # To declare sub-frames or different frames, do this:
+    frame1 = Frame(root)  # Make sure to specify where the frame belongs on, which is root
+    frame2 = Frame(root)
+
+    # You can also title your GUI windows using a title() method:
+    root.title("I am a mighty title")
+
+    # Want a certain frame to go away at a certain stage in your code or execution? Well, here's how:
+    root.destroy()  # Once you destroy it, you can't do anything with it until you bring it back
+    # You can also use withdraw to accomplish this (but the frame is now hiding instead of being destroyed):
+    root.withdraw()  # By using withdraw(), you can bring the frame back easily with deiconify()
+    
+    # To put text on your GUI, you can use either Labels or Entries (entries are more for user input, though):
+    # To do a label:
+    myLabel = Label(frame1)  # You can use any frame here, just try and see what you like
+    # To do an entry:
+    myEntry = Entry(frame1)
+    # You can also make labels hold images in the GUI like so:
+    img = PhotoImage(file=r"C:\someImageFolder\hereIam.png")
+    imgLabel = Label(frame2, image=img)
+
+    # In addition to the entry and label widgets, there is also buttons! You can make a button in the GUI like so:
+    ok = Button(frame1, text="OK")
+    # You can add back end functionality to each button by using the command argument:
+    helloButton = Button(frame1, text="Hi", command=lambda: sayHi())  # Lambda is used to have short functions compressed into a command, which is used in a button!
+
+    # After you are satisfied with your widgets, you still need to actually place them onto the root frame or window.
+    # You can place widgets mainly in three ways: pack(), grid(), or place().
+    # Pack() will just stuff and center the widgets, grid() will divide the frame in columns and rows and place accordingly, and place() will place based on XY-values.
+    # Remember: you can only format ONE sub-frame to one placing method; choose wisely. Here's an example where frame1 is only grid while frame2 is only pack:
+    ok.grid(row=0, column=1)
+    helloButton.grid(row=0, column=2)
+    myLabel.grid(row=0, column=0)
+    imgLabel.pack()
+
+    # Finally, make sure to do a main loop to keep your GUI window running until the user closes it:
+    root.mainloop()
+____________________________________________________________________________________________________________________
+-Extra Online Python courses for more learning (suggested):
+--https://youtu.be/rfscVS0vtbw
+--https://youtu.be/_uQrJ0TkZlc
+--https://youtu.be/t8pPdKYpowI

@@ -1,0 +1,160 @@
+=========================================
+|BTS-3000: Troubleshooting Documentation|
+=========================================
+
+Warnings:
+------------------
+-A warning pop-up means something may cause issues with the output, but isn't at a critical level. 
+However, it should always be taken that warnings are not something to be shrugged off, but something to revise and fix.
+-Currently, there are two warnings that BTS-3000 can give in response to dangerous input:
+1.) Runtime Warning
+2.) Model Warning
+
+-Runtime Warning: this warning occurs when the program tries to find or modify something but it can't find it. 
+--The only current runtime warning the program gives is in regard to the gearSep equation.
+If the program can't find SFORCE_reps_RP_gearSep in the model file, then it spits out a warning because that SFORCE is
+supposed to have an important gearSep equation that the program modifies.
+--To fix this warning, try to first make sure that the casing and naming of the SFORCE gearSep in the file is identical to that in the source code or in 
+Removing Parameters Steps documentation.
+--Also, ensure the gearSep equation exists as well in the file.
+--Once the warning goes away the next run, make sure the new gearSep equation is what is desired. If the formula ever changes for the equation, you may have 
+to write or rewrite over some code.
+--If you don't need the equation or gearSep anymore, you can simply ignore the warning and let the process continue.
+--UPDATED: There are now more runtime warnings added. RackBrgSpr_Preload and RackBrgSpr_Stiff now have warnings indicating if the BTS could not find them in the file.
+ChangeVarToVal function also has a Runtime warning in its "else" statement in case the variable that is being changed to a value couldn't be found in the file.
+You may need to revise the file to see if they were missing or if it can be ignored if they are SUPPOSED to be missing.
+
+-Model Warning: this warning occurs when something is detected ahead of runtime internally in the file that could cause issues.
+--The only current model warning is in regards to the component or part names (which are segments), and happens if a part name is too short (less than 3 characters).
+This can cause problems since the code could mistaken a name for another different name due to the one being contained in the other for being so short.
+This allows the association process to be less accurate and output could be bad. Example, a component named "t" is also registered the same as a component named "tbearing."
+--To fix this warning, go back to your model and edit to make sure all component names have 4 letters or more (the more specific the name, the better).
+
+Errors:
+-------------------
+-An error pop-up means something is so critical that it will destroy the process and thus is aborted before any damage can be done to output.
+If you get an error from BTS, you must go back and fix it before moving on with the defeature.
+-Currently, there are three errors that BTS-3000 can give in response to destructive input:
+1.) Critical Warning
+2.) Model Error
+3.) GUI Error
+
+-Critical Warning: this is a type of error that is not as severe as others, but still critical enough to be put under the error category. 
+--The only current critical warning pop-up happens when the selected file from "Browse..." is actually empty (no content). 
+--To fix this empty file error, you can select a different file or try making it again. This empty file is most likely the result of a wrong selection or bad file.
+
+-Model Error: a severe type of error where an internal model piece or component is missing or wrong. 
+--The only current model error pop-up in BTS is with the file path to the model being wrong in the selection process. BTS can't defeature if it can't find the model.
+--To fix this file path to model error, check that the model you want defeature exists first. If it does, make sure the file path you inputted is correct.
+You can also re-select the model to defeature from "Browse..." again. It is likely that the user may have mistyped into the defeature file path box and changed it.
+Also, it is advised to have your model in the local C: drive on your PC as OneDrive can interfere with permissions.
+
+-GUI Error: a severe type of error where there is an issue with one or more of the GUI components in the BTS-3000 display. 
+--The only current GUI error deals with the splash screen and the home page. The GUI components used in both of these are: the BTS banner, Nexteer Background,
+loading circle, and the Nexteer Icon.
+--To fix this error, first check that all components are located in "[your_saved_dir_here]\BTS3000_GUI_Files". The components that should be in there are:
+*Loading_Circle (1).png
+*NexteerBanner.PNG
+*NexteerBanner2.jpg
+*NexteerBanner3.jpg
+*NexteerBanner4.jpg
+*NexteerBannerBckgrnd.png
+*NexteerBannerBTS.png
+*NexteerIcon.ico
+--Ensure that the names above match exactly those in the BTS3000_GUI_Files folder. 
+--If that still doesn't fix it, go into the code and make sure that all GUI file references are correct. [ex: PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerBannerBckgrnd.png")]
+--Note that JPG files do not work in Python and those JPG files in the folder are simply stock photos that can be later converted to PNG if they are ever wanted to be used.
+--Here's a list of each GUI component reference in the code:
+*Line 1700 | img = PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerBannerBTS.png")
+*Line 1704 | secondRoot.iconbitmap(r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerIcon.ico")
+*Line 1929 | img3 = PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerBannerBckgrnd.png")
+*Line 1939 | img = PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerBannerBTS.png")
+*Line 1942 | rootFrame.iconbitmap(r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerIcon.ico")
+*Line 1986 | splashFrame.iconbitmap(r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerIcon.ico")
+*Line 1992 | img = PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerBannerBTS.png")
+*Line 1996 | loadImg = PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\Loading_Circle (1).png")
+
+General GUI Issues:
+-----------------------
+-"Why is the GUI home screen window and loading bar window not responding?"
+--This is because backing up the source model file takes a while because of the large size. Multithreading helps this yet it still can happen. 
+Just wait a minute and then it the loading bar window should start making progress again. You can try re-opening the loading bar window (DON'T CLOSE IT) once every 30 seconds to see if that helps as well.
+
+-"Can I run the defeature process in the background?"
+--Yes, but it might go slower depending on how much your computer is running. You can just minimize the loading bar window and the homescreen and let it run. Re-open it every so often to check progress.
+
+-"The GUI files are all gone! What should I do?"
+--Do not panic. If all the GUI components are missing, just make a backup folder with all the original files using the GitHub repo. Go to GitHub defeature repo, download, and make: "[your_saved_dir_here]\BackupOfGUIFiles" and
+then copy/paste those files back into the BTS3000_GUI_Files folder. (You can also make a new folder named BTS3000_GUI_Files if the folder also got deleted)
+
+-"Will the GUI still run without the GUI components/files?"
+--No, it will not. That's why it is super important to maintain those files and keep them in check. Avoid renaming, moving, or deleting them. 
+
+-"I got a black terminal screen with some weird error codes appearing after trying to run the BTS. What's wrong and how do I fix it?"
+--This will happen if a Python error is not handled within the script. Currently all GUI TK errors should be handled. However, if something new arises, you will have to edit code, save changes, and make a new defeature kit to upload.
+Usually you can account for Python errors using try-and-except blocks. These blocks allow Python to TRY and run code and if an error happens, it goes to the exception part of the block where the error type is listed (you can find tutorials on try-except blocks online).
+Just use the error's name you got in the black terminal screen in the heading of the except block (you can follow how I did it in my code as well).
+
+General Code Issues:
+----------------------
+-"I just made edits to the defeature program code. How do I save and upload those changes to be the new updated version?"
+--First, if you are using PyCharm IDE, click "Save All" button under "File" in the top left while having your updated code open in the IDE. You can also do Ctrl+S.
+Next, you are going to want to have Python 3.9 installed on your computer for this, open Command Prompt through Windows Search Bar in the bottom left by searching "cmd".
+Then, type "pip install pyinstaller" and hit Enter. Let pip install the pyinstaller package onto your computer.
+Once done, navigate to the directory in the Command Prompt where the updated Python script is located (you can use "cd" command for this).
+Then once you are in the same directory, type "pyinstaller nameOfYourScript.py --onefile" and then hit Enter. Pyinstaller will then compile a new kit for you.
+Once it's finished, make a new folder named defeature_Kit_Updated and store all the Pyinstaller stuff in that folder (the python script itself, dist folder, build folder, pycache folder, and the .spec).
+If you need a video tutorial on this, here's an example from Python In Office's blog: https://youtu.be/oS7KwxA8JoA
+Finally, once you got your new kit together, upload it to your drive. Now, others can just download a copy of the kit and use the updated version!
+
+-"How do I edit code in PyCharm?"
+--First, install PyCharm on your computer. There are videos on how to do this properly on YouTube. Just make sure you install the correct type (64 bit launcher for 64 bit Windows system), it's the community edition, you add it to the PATH, and you install it where desired.
+Once you installed PyCharm, launch it through the shortcut or find it via Windows Search Bar in bottom left. Use the New Project button to make a new Project folder and name the Project. From there, you can go to open/create a new Python file using File in the top left. 
+Then, just copy/paste the original source code in "[your_saved_dir_here]\defeatureModel_SourceCode\defeatureModelSourceCode.py" to the new Python file and make the edits.
+Click "Save All" under File in the top left of Pycharm after you make edits. You can run your code within Pycharm using the green triangle play button. 
+If it's still a little confusing, I suggest watching some videos on YouTube about using PyCharm. Here's a nice small course video on Pycharm: https://youtu.be/hc50ALh_x5g
+
+-"Some of my code is highlighted in Yellow or Red in Pycharm, why?"
+--This means there is a error or warning in your code. An error will lead to either runtime or syntax errors happening after you try your code. 
+A warning can cause issues later on, but doesn't for sure spit out an error right away. Both should be dealt with and fixed to make the code stable.
+Pycharm should also offer some solutions if you hover over the error or warning; if not then you'll have to rearrange and troubleshoot.
+
+-"Python is saying I do not have permissions when I run my code. Why?"
+--If the file you're trying to defeature is located in OneDrive like Documents folder, Nexteer at times will deny file permissions to Python which leads to errors.
+Make sure to have the defeature text file that you're referencing inside your C: drive so no permission errors occur at runtime.
+
+-"How do I debug in PyCharm?"
+--First, set some debugging breakpoints in the code by clicking on the empty column right across from the line number. They should appear as red dots. 
+Then, click on the debug symbol in the top right which looks like a green lady bug. You can then use step over or step into tools in the Pycharm console that appeared.
+You can troubleshoot and debug from there.
+
+-"The entire file is in lowercase! How do I fix it?"
+--The upgraded kit version of the defeature file program utilizes lower case interpretation to make file reading more accurate and stable.
+However, if the fileLines variable is interpreted in lowercase with a for loop and .lower() ALONG with being passed to a removal method in a parameter
+then this can cause the file to be written in lowercase. You can fix this by having a separate readLines() variable (maybe called "lowerCaseLines") for only reading
+to help while also having the normal readlines in a different variable called fileLines that is passed to the removal method call. 
+If that doesn't help, you can always fallback on the upgraded lowercase source code in your drive and compare differences to see what change might've caused this.
+Just remember that often the removal methods use what is read to know what to write to the updated file. You can click on variables in PyCharm to track and highlight where they are used.
+If all else fails, you can also fallback on the original source code (that is not upgraded) in your drive.
+TIP: also try debugging with PyCharm's debugger or comment individual method calls in main() to find the source of where the file is being made in lowercase.
+
+-"I am getting some type errors or conversion errors in PyCharm after making some edits to code. Why and what do I do?"
+Type errors or conversion errors are a result of either passing an argument to a parameter of the wrong data type (ex: passing an integer when it asks for a string) or
+you have called a function/method incorrectly (perhaps syntax). If it involves a data type, then you can use casting like "str(iAmAnInteger)" or just switch to using
+the correct data type directly. If it involves syntax or the method call, make sure you called it correctly with following how other methods are called in the code. 
+You can refer to the DICTIONARY documentation on how to call certain methods or functions in the code. 
+
+-"Python is saying I am missing a package! What do I do to get it?"
+--Most likely when copying the kit, it may have forgotten to copy a package or the package may have gotten deleted somehow. 
+The simplest way to fix this is to make a new kit using Python's pip in the Windows Command Terminal. Use the current defeature python source code and 
+follow the above instructions on how to upload changes to your drive using pip to make a new kit. Once a new defeature kit is made, use that kit again and hopefully
+all packages should be there now (download the kit locally to your drive before using; go to dist >>> the defeature .exe file to launch). If not, you can either have others do a complete install of Python or use your install of Python with pip to get the certain packages with "pip install".
+
+-"The entire file is written in some weird binary and letters. How do I fix it?"
+--This can result from a method called in main() or inside another method that writes to the file when it doesn't need to. 
+First debug and isolate where this issue is coming from and from which method/function. You can use PyCharm's debugger or comment out certain code to isolate. 
+(Comment out code using "#" at the front of the lines of code; one "#" per line).
+Once, you found where the issue stems from, you can take a few routes to solve the issue: you can either surround it in a "if statement" to only execute when the instance
+exists in the file, or you can remove that segment of code and find a replacement or make new code. I personally use the "if statement" tactic since it provides a protective layer
+while still letting the functionality exist. To do the "if statement" protection, write "if ThisIsWhatIWantToFind in file:" and then indent the block of code where the problem comes from. 
+You can swap the file variable for a fileLines variable or a line variable depending on where it's located and what works.
