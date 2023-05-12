@@ -67,26 +67,32 @@ ________________________________________________________________________________
 -getCFactor()
 >>Purpose: gets the real value of rpCFactor.
 >>Parameters: None.
+>>NOTE: Return type used to be of Python-float (double), but was changed in V3.5 to be string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getPressAngle()
 >>Purpose: gets the real value of rpNormPressAng.
 >>Parameters: None.
+>>NOTE: Return type used to be of Python-float (double), but was changed in V3.5 to be string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getHelixAngle()
 >>Purpose: gets the real value of rackHelixAng.
 >>Parameters: None.
+>>NOTE: Return type used to be of Python-float (double), but was changed in V3.5 to be string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getRBSpringStiffness()
 >>Purpose: gets the real value of rackBrgSpr_stiff.
 >>Parameters: None.
+>>NOTE: Return type used to be of Python-float (double), but was changed in V3.5 to be string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getRBSpringPreload()
 >>Purpose: gets the real value of rackBrgSpr_preload.
 >>Parameters: None.
+>>NOTE: Return type used to be of Python-float (double), but was changed in V3.5 to be string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getRealValue(keyword)
 >>Purpose: generalized function for getting the real value of a variable keyword.
 >>Parameters: (String) keyword-the name of the variable to find.
+>>NOTE: Return type is string. 
 _______________________________________________________________________________________________________________________________________________________________________
 -getCylinderName(indexOfGeometryBlock)
 >>Purpose: gets the cylinder name inside a geometry block.
