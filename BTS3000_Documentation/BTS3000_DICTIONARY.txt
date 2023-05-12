@@ -19,50 +19,62 @@ ________________________________________________________________________________
 -findIndexOf(keyword, fileLines, fileLength)
 >>Purpose: finds the index of a keyword in a file.
 >>Parameters: (String) keyword-the name of what to find | (String/list) fileLines-the specified content of the file | (int) fileLength-the length of the file.
+>>NOTE: Return type is integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeCylinder()
 >>Purpose: removes the first seen instance of a cylinder and removes both the geometry create and geometry attributes block of that cylinder.
 >>Parameters: None.
+>>Note: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -findEndOfBlock(startLineIndex)
 >>Purpose: finds the end index of the block of text using the inputted starting line index.
 >>Parameters: (int) startLineIndex-the index of where to start inside the block (can be the actual start of the block or the start of a keyword in the block).
+>>NOTE: Return type is integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -findStartOfBlock(endLineIndex)
 >>Purpose: finds the starting "!" delimiter as the start point of a block using the end point of the block as reference.
 >>Parameters: (int) endLineIndex-the index or line where the block ends.
+>>NOTE: Return type is intended to be integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeBlock(blockStart, fileLines)
 >>Purpose: removes a block of text in a file using a starting point and the file's contents as input.
 >>Parameters: (int) blockStart-the index of where the block starts | (String/list) fileLines-the specified content of the file.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeSegment(segmentStart, segmentEnd, fileLines)
 >>Purpose: removes a entire segment containing varying amounts of blocks by specifying the file, start, and end of the segment to remove.
 >>Parameters: (int) segmentStart-the index of where the segment starts | (int) segmentEnd-the index of where the segment ends | (String/list) fileLines-the specified content of the file.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -hasKeyword(keyword, fileLines)
 >>Purpose:  tries to find a keyword and returns true or false based on if it found it or not in the file's contents.
 >>Parameters: (String) keyword-the name of what to find | (String/list) fileLines-the specified content of the file.
+>>NOTE: Returns boolean (True/False). 
 _______________________________________________________________________________________________________________________________________________________________________
 -removeCylinderRef()
 >>Purpose: removes a cylinder reference in top-down order (the first-found instance starting from the first line in the file) from the file.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeMarkerModify()
 >>Purpose: removes a marker modify in top-down order from the file.
 >>Parameters: None.
+>>NOTE: Returns nothing. 
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllCylinders()
 >>Purpose: eliminates all cylinder creations by cycling the singular removal until no instances are left in the file.
 >>Parameters: None.
+>>NOTE: Returns nothing. 
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllCylinderRefs()
 >>Purpose: eliminates all cylinder refs by cycling the singular removal until no instances are left in the file. (Joints are kept.)
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllMarkerModifies()
 >>Purpose: eliminates all marker modifies by cycling the singular removal until no instances are left in the file.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -getCFactor()
 >>Purpose: gets the real value of rpCFactor.
@@ -97,274 +109,342 @@ ________________________________________________________________________________
 -getCylinderName(indexOfGeometryBlock)
 >>Purpose: gets the cylinder name inside a geometry block.
 >>Parameters: (int) indexOfGeometryBlock-the index of where the geometry block begins.
+>>NOTE: Return type is string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getFullVarName(keyword)
 >>Purpose: generalized function for getting the full variable name of a variable keyword.
 >>Parameters: (String) keyword-the name of the variable.
+>>NOTE: Return type is string.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeVarCreate(keyword)
 >>Purpose: generalized function for removing a variable create definition block in the file.
 >>Parameters: (String) keyword-the name of the variable.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeVarModify(keyword)
 >>Purpose: generalized function for removing a variable modify definition block in the file.
 >>Parameters: (String) keyword-the name of the variable.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeVar(keyword)
 >>Purpose: takes a variable name and removes that variable's create and modify block.
 >>Parameters: (String) keyword-the name of the variable.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -replaceAllVar(varName, realValue)
 >>Purpose: replaces a variable with its real value in all instances of the file.
 >>Parameters: (String) varName-the name of the variable to replace | (any) realValue-the real value of the variable.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeForceModify(keyword)
 >>Purpose: removes a force modify block in the file.
 >>Parameters: (String) keyword-the name of the force.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -getOldRPGearSepEqu()
 >>Purpose: gets the old RP_gearSep equation that is defined.
 >>Parameters: None.
+>>NOTE: Returns a (concatenated) string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getOldRPGearSepEquV2()
 >>Purpose: gets the old RP_gearSep equation that is defined in a force modify (more flexible and stable).
 >>Parameters: None.
+>>NOTE: Returns a string.
 _______________________________________________________________________________________________________________________________________________________________________
 -getNewRPGearSepEqu()
 >>Purpose: gets the new RP_gearSep equation by getting real values and the file name for substitution.
 >>Parameters: None.
+>>NOTE: Returns a (concatenated) string.
 _______________________________________________________________________________________________________________________________________________________________________
 -insertRPGearSepEqu()
 >>Purpose: inserts in the new RP_gearSep equation using built-in replace Python function.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeRepsCalcVar()
 >>Purpose: removes a block that has a repsCalc variable inside of it.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -changeRBSpringPreloadToVal()
 >>Purpose: changes RB Spring Preload variable to its real value in all references to it.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -changeRBSpringStiffToVal()
 >>Purpose: changes RB Spring Stiffness variable to its real value in all references to it.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -changeVarToVal(keyword, hasVarModify=True)
 >>Purpose: generalized function for changing instances of a variable to its real value.
 >>Parameters: (String) keyword-the name of the variable | (boolean) hasVarModify-true or false value on if the variable has a variable modify block; default is set to True.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -changeVarToValAll(keyword)
 >>Purpose: changes all instances of a specified variable to its respected real values in the file by cycling until only real values of the variable remain.
 >>Parameters: (String) keyword-the name of the variable.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllRepsCalcVar()
 >>Purpose: removes all instances and definitions of repsCalc variables in the file through cycling the removal of repsCalc variable until no repsCalc remain.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAndReplaceAllRepsCalcVar()
 >>Purpose: updated repsCalc removal method to instead replace repsCalc variable references with values and then delete the repsCalc variables.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -fileLength(fileName)
 >>Purpose: finds the total length of a text file, when the file isn't empty.
 >>Parameters: (String) fileName-the name of the file to find the length of.
+>>NOTE: Returns an integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -getFirstLetterIndex(string)
 >>Purpose: gets the first letter index of a string by searching for the first encountered alphabet instance. (used usually for segment headers in BTS)
 >>Parameters: (String) string-the specified line of text.
+>>NOTE: Returns an integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -getLastLetterIndex(string, startOfFirstLetterIndex)
 >>Purpose: finds the last letter index of a segment header by finding where the second half of the header syntax is. (segment header syntax is "!-- --!")
 >>Parameters: (String) string-the specified line of text | (int) startOfFirstLetterIndex-the index of where the first alphabetical letter occurs in the string.
+>>NOTE: Return type is intended to be integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -isAssociatedMarker(keyword)
 >>Purpose: finds if a marker is associated or not by seeing if its instance is inside its own block or not.
 >>Parameters: (String) keyword-the name of the marker.
+>>NOTE: Return type is boolean (True/False). 
 _______________________________________________________________________________________________________________________________________________________________________
 -findAndRemoveUnassociated()
 >>Purpose: finds and removes unassociated reps_variables in the file, using a list.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -findAndReplaceAssociated()
 >>Purpose: replaces the remaining associated variables with their real values (findAndRemoveUnassociated is called before this in main() so only associated are left).
 >>Parameters: None. 
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeOtherForceModifies()
 >>Purpose: removes certain force modifies while keeping other ones that should stay by various checks. (SFORCE kept:reps_impct_RackBrg, reps_impct_RPbottom, reps_RP_gearSep, MotorTorque_SysInp_Nmm, reps_BScrew_UnsymFr, HW_Sens_Unsym_torque; GFORCE kept: reps_bnutIso_NLspring)
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -getFullMarkerName(startFromIndex)
 >>Purpose: extracts the full marker name starting from a specified line in the file.
 >>Parameters: (int) startFromIndex-the line from which to start looking for the full marker name.
+>>NOTE: Returns a string.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeMarkerCreate(keyword)
 >>Purpose: removes a marker create block of a specified name.
 >>Parameters: (String) keyword-the name of the marker.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeMarkerAttr(keyword)
 >>Purpose: removes the marker attributes block of a specified name.
 >>Parameters: (String) keyword-the name of the marker.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeGroundFrameMarkers()
 >>Purpose: removes certain markers inside the ground frame segment in the file (kept location specific ones like input shaft, mounts, mass/inertia markers, and associativity).
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -findAndRemoveDatum()
 >>Purpose: finds and removes datum marker and datum attribute blocks using a list.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -findAndRemoveParasolid()
 >>Purpose: finds and removes a parasolid segment instance from the file.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removePSMAR()
 >>Purpose: removes a single PSMAR block using the block removal process (block removal process: find the end, find the start using the end, remove using the start)
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllPSMAR()
 >>Purpose: removes all instances of PSMAR (parasolid markers) by cycling the PSMAR removal method until none remain.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeModelSpecificColors()
 >>Purpose: removes the model specific colors segment in the file.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeBenchOCSpline()
 >>Purpose: performs a single removal of a benchOC spline block using the block removal process.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllBenchOC()
 >>Purpose: removes all subsequent benchOC instances in the file by cycling the removal of benchOC until none remain in the file.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -isInDefaultGroundFrame(fileLines, startOfSegment)
 >>Purpose: checks if a segment is registered in the ground frame (first step to being a part segment).
 >>Parameters: (String/list) fileLines-the file's content | (int) startOfSegment-the index at which the segment begins (the header).
+>>NOTE: Returns boolean (True/False).
 _______________________________________________________________________________________________________________________________________________________________________
 -isPartSegment(fileLines, startOfSegment, segmentName)
 >>Purpose: checks if a segment has the part create and part name attribute to see if it's a part segment.
 >>Parameters: (String/list) fileLines-the file's content | (int) startOfSegment-the index at which the segment begins | (String) segmentName-the name of the segment or part.
+>>NOTE: Returns boolean (True/False).
 _______________________________________________________________________________________________________________________________________________________________________
 -findPartSegments()
 >>Purpose: finds a list of part segments that are in the current file.
 >>Parameters: None.
+>>NOTE: Returns a list (container of elements/items). 
 _______________________________________________________________________________________________________________________________________________________________________
 -isPartInOwnSegment(partName, indexOfFoundPart, fileLines)
 >>Purpose: finds if a part is inside it's own segment by backtracking upwards in the file.
 >>Parameters: (String) partName-the name of the part | (int) indexOfFoundPart-the index at which the part was found in the file | (String/list) fileLines-the file's content.
+>>NOTE: Returns boolean (True/False).
 _______________________________________________________________________________________________________________________________________________________________________
 -isPartAssociated(fileLines, partName)
 >>Purpose: finds if a part/component is associated by seeing if its instances are inside its own segment or not.
 >>Parameters: (String/list) fileLines-the file's content | (String) partName-the name of the part.
+>>NOTE: Returns boolean (True/False).
 _______________________________________________________________________________________________________________________________________________________________________
 -getStartOfSegment(segmentName, fileLines)
 >>Purpose: finds the start of a segment using it's segment name in the file.
 >>Parameters: (String) segmentName-the name of the segment | (String/list) fileLines-the file's content.
+>>NOTE: Returns a integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -getEndOfSegment(startOfSegment, fileLines)
 >>Purpose: finds the end of a segment using the segment's starting point.
 >>Parameters: (int) startOfSegment-the index at which the segment starts | (String/list) fileLines-the file's content.
+>>NOTE: Return type is intended to be integer.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeUnassociatedPartSegments()
 >>Purpose: filters out associated part segments and removes those that are are unassociated.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeDataRefAxialSprNL()
 >>Purpose: removes a single instance of a DATA REF axial spring block from the file.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllDataRefAxialSprNL()
 >>Purpose: removes all subsequent instances of a DATA REF axial spring block by cycling the DATA REF axial spring block removal method until none remain.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeWIPBenchSprNL()
 >>Purpose: removes a single instance of a DATA WIP1 spring block.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllWIPBenchSprNL()
 >>Purpose: removes all subsequent instances of a DATA WIP1 block by cycling the DATA WIP1 spring block removal until none are left.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeDOBJAvg()
 >>Purpose: performs a single removal of a direct object AVG block.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeDOBJRms()
 >>Purpose: performs a single removal of a direct object RMS block.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllDOBJAvg()
 >>Purpose: removes all direct object AVG blocks from file by cycling the DOBJ Avg block removal until none remain.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllDOBJRms()
 >>Purpose: removes all direct object RMS blocks from file by cycling the DOBJ RMS block removal until none remain.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -getActualModelName()
 >>Purpose: gets the model name of from the file using Adams View Model segment.
 >>Parameters: None.
+>>NOTE: Returns a string.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeMeasure(measureType)
 >>Purpose: removes a measure block based on if the specified measure is found.
 >>Parameters: (String) measureType-the specified measure.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeAllMeasure(measureType)
 >>Purpose: removal process for measures by cycling the remove measure method until none remain in the file.
 >>Parameters: (String) measureType-the specified measure.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -replaceSpecificColor()
 >>Purpose: accounts for if a model specific color remains referenced after model specific colors removal process; replaces to RED.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -replaceAllSpecificColors()
 >>Purpose: repeats specific color removal process for all subsequent instances through cycling until all are replaced in the file.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -checkComponentNames()
 >>Purpose: checks over all initial components and segments in the model to see if any are too short; displays a warning window if so.
 >>Parameters: None.
+>>NOTE: Returns a boolean (True/False).
 _______________________________________________________________________________________________________________________________________________________________________
 -backupSourceFile()
 >>Purpose: makes a backup file of the original source file in the same directory.
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -browseFiles(display)
 >>Purpose: provides the browse files window functionality to the "Browse..." button in the GUI; also checks for any warnings or errors in the selected file.
 >>Parameters: (Entry) display-the box for which the chosen file will be displayed to.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -isEmptyBox(entry)
 >>Purpose: will check if an entry box is empty or not (an entry box is the text field you see in the GUI).
 >>Parameters: (Entry) entry-the text field box to check.
+>>NOTE: Returns a boolean (True/False).
 _______________________________________________________________________________________________________________________________________________________________________
 -okButtonPressed(root, defeatureEntry, backupEntry, messageWindowLabel)
 >>Purpose: will check and process if all data gathered from the entry boxes are sufficient to execute main() and start the defeature.
 >>Parameters: (Tk) root-the root GUI frame | (Entry) defeatureEntry-the entry box where the defeature file is shown | (Entry) backupEntry-the entry box where backup is shown | (Label) messageWindowLabel-the label to which notifications are displayed.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -startProcessWindow(oldRoot)
 >>Purpose: third and final GUI window for displaying a loading bar that tracks defeature progress.
 >>Parameters: (Tk) oldRoot-the previous GUI root window.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -setEntryText(text, entry)
 >>Purpose: modifies an entry box's text to the passed in text.
 >>Parameters: (String) text-what to set the text in the entry box to | (Entry) entry-the entry box being changed.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -removeWhiteSpace(string)
 >>Purpose: removes extra spaces from a string.
 >>Parameters: (String) string-the string that will have whitespace removed from it.
+>>NOTE: Returns a string.
 _______________________________________________________________________________________________________________________________________________________________________
 -fileIsEmpty(path)
 >>Purpose: checks if a file is empty and contains nothing.
 >>Parameters: (String) path-the path to the file to check.
+>>NOTE: Returns a boolean (True/False). 
 _______________________________________________________________________________________________________________________________________________________________________
 -main(progress, statusLabel)
 >>Purpose: the main function where all the steps to defeature are done. All defeaturing operations go here after being defined.
 >>Parameters: (double) progress-the amount of progress that is checked by the loading bar to display progress | (Label) statusLabel-label used to display what step is being done in main.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 -mainGUI()
 >>Purpose: starts the GUI with a splash screen then loads the home screen. Directs all subsequent processes (with main being executed in the third GUI window).
 >>Parameters: None.
+>>NOTE: Returns nothing.
 _______________________________________________________________________________________________________________________________________________________________________
 
 References:
