@@ -74,6 +74,8 @@ loading circle, and the Nexteer Icon.
 *Line 1992 | img = PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\NexteerBannerBTS.png")
 *Line 1996 | loadImg = PhotoImage(file=r"[your_saved_dir_here]\BTS3000_GUI_Files\Loading_Circle (1).png")
 
+**NOTE: Since version 3 of the defeature model kit, the program will automatically find and reference GUI assets, making some of these hard-coded and mapped GUI lines obsolete.**
+
 General GUI Issues:
 -----------------------
 -"Why is the GUI home screen window and loading bar window not responding?"
