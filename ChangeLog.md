@@ -45,8 +45,8 @@
     <details>
     <summary>Changes:</summary>
         <ul>
-        <li>Upgraded getRealValue() Python function to pull its output from source, non-lowercased file lines.</li>
-        <li>Added whitespace removal filter to getRealValue() right before it returns for more accurate output.</li>
+        <li>Upgraded <code>getRealValue()</code> Python function to pull its output from source, non-lowercased file lines.</li>
+        <li>Added whitespace removal filter to <code>getRealValue()</code> right before it returns for more accurate output.</li>
         </ul>
     </details>
 <li>KitV3.3</li>
@@ -56,8 +56,8 @@
     <details>
     <summary>Changes:</summary>
         <ul>
-        <li>Replaced code of both changeRBSpringPreloadToVal() and changeRBSpringStiffToVal() with instead real value functions for changing the spring coefficients; now using getRealValue() for code consistency.</li>
-        <li>Both getRBSpringPreload() and getRBSpringStiffness() Python functions have been updated to use ping-pong index functions (e.g., findStartOfBlock+1) for checking that the correct header keyword is present during file processing.</li>
+        <li>Replaced code of both <code>changeRBSpringPreloadToVal()</code> and <code>changeRBSpringStiffToVal()</code> with instead real value functions for changing the spring coefficients; now using <code>getRealValue()</code> for code consistency.</li>
+        <li>Both <code>getRBSpringPreload()</code> and <code>getRBSpringStiffness()</code> Python functions have been updated to use ping-pong index functions (e.g., <code>findStartOfBlock+1</code>) for checking that the correct header keyword is present during file processing.</li>
         </ul>
     </details>
 <li>KitV3.4</li>
@@ -67,7 +67,7 @@
     <details>
     <summary>Changes:</summary>
         <ul>
-        <li>Updated getCFactor(), getPressAngle(), and getHelixAngle() to use ping-pong algorithm references instead of previous line indices.</li>
+        <li>Updated <code>getCFactor()</code>, <code>getPressAngle()</code>, and <code>getHelixAngle()</code> to use ping-pong algorithm references instead of previous line indices.</li>
         <li>For file output, pulls from source file's lines instead of post-processed lowercase input to prevent bad output.</li>
         </ul>
     </details>
@@ -80,12 +80,12 @@
         <ul>
         <li>Accessors now return string real-values instead of Python-floats in order to prevent decimal cutoffs; they are the following:</li>
             <ul>
-            <li>getRBSpringPreload()</li>
-            <li>getRBSpringStiffness()</li>
-            <li>getHelixAngle()</li>
-            <li>getPressAngle()</li>
-            <li>getCFactor()</li>
-            <li>getNewRPGearSepEqu()</li>
+            <li><code>getRBSpringPreload()</code></li>
+            <li><code>getRBSpringStiffness()</code></li>
+            <li><code>getHelixAngle()</code></li>
+            <li><code>getPressAngle()</code></li>
+            <li><code>getCFactor()</code></li>
+            <li><code>getNewRPGearSepEqu()</code></li>
             </ul>
         </ul>
     </details>
@@ -97,7 +97,7 @@
     <summary>Changes:</summary>
         <ul>
         <li>Fixed progress bar to no longer lag statuses.</li>
-        <li>Defeature functions, findAndRemoveUnassociated() and findAndReplaceAssociated(), have been programmed to use the ping-pong algorithm instead of OBS prev-line lookup context (note: lowered performance by a few seconds but upgraded robustness).</li>
+        <li>Defeature functions, <code>findAndRemoveUnassociated()</code> and <code>findAndReplaceAssociated()</code>, have been programmed to use the ping-pong algorithm instead of OBS prev-line lookup context (note: lowered performance by a few seconds but upgraded robustness).</li>
         </ul>
     </details>
 </ul>
