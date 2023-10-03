@@ -144,6 +144,12 @@
     <ul>
     <li>Summary: created as a common FAQ help document for using the defeature app.</li>
     </ul>
+    <details>
+    <summary>Changes:</summary>
+        <ul>
+        <li>Updated GUI section to include the fact that the version 3 kits' code utilize an automatic search for GUI assets instead of hard-coded lines.</li>
+        </ul>
+    </details>
 <li>How To Install Python</li>
     <ul>
     <li>Summary: created as a brief tutorial for new Python developers as to how to install the compatible Python version on their PC.</li>
