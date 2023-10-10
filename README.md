@@ -1,5 +1,7 @@
 # DefeatureModel
-Repository for my defeature model script and assets, developed for Nexteer Automotive. 
+Repository for my defeature model script and assets, developed for Nexteer Automotive.
+
+The main offering of this repository is a Python application, aliased as a "kit", that can automatically defeature or remove parameters from a MSC Adams model file. To use this repository, download a zipped copy and navigate to the documentation directory inside to read various steps and tutorials on how to use the defeature application. 
 
 # Nexteer Automotive IP and Legal Statement
 ## Procedure G1356 Details (See IP)
